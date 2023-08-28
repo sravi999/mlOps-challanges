@@ -1,0 +1,221 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Metadata": {
+        "AWS::CloudFormation::Designer": {
+            "20933937-814a-435b-b8e8-3c21db26d807": {
+                "size": {
+                    "width": 60,
+                    "height": 60
+                },
+                "position": {
+                    "x": 80,
+                    "y": 30
+                },
+                "z": 0,
+                "embeds": []
+            },
+            "3f40c450-e37e-47bc-af32-b047957309af": {
+                "size": {
+                    "width": 60,
+                    "height": 60
+                },
+                "position": {
+                    "x": 40,
+                    "y": 130
+                },
+                "z": 0,
+                "embeds": [],
+                "isassociatedwith": [
+                    "20933937-814a-435b-b8e8-3c21db26d807"
+                ]
+            },
+            "a6310c35-8494-4244-8c3a-f565ec200ba3": {
+                "size": {
+                    "width": 60,
+                    "height": 60
+                },
+                "position": {
+                    "x": -60,
+                    "y": 50
+                },
+                "z": 0,
+                "embeds": []
+            },
+            "80c8d79f-a77b-4e8c-9ae1-cf185c16efcd": {
+                "size": {
+                    "width": 60,
+                    "height": 60
+                },
+                "position": {
+                    "x": -217.23890068422776,
+                    "y": 78.22735751829552
+                },
+                "z": 0,
+                "embeds": []
+            },
+            "4f7cc55e-9338-496b-b4aa-c7798785136c": {
+                "size": {
+                    "width": 60,
+                    "height": 60
+                },
+                "position": {
+                    "x": -216.04429572617903,
+                    "y": 150.5009574802441
+                },
+                "z": 0,
+                "embeds": []
+            }
+        }
+    },
+    "Resources": {
+        "PublicBucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+                "BucketName": "public-bucket-ml-01",
+                "PublicAccessBlockConfiguration": {
+                    "BlockPublicAcls": false,
+                    "BlockPublicPolicy": false,
+                    "IgnorePublicAcls": false,
+                    "RestrictPublicBuckets": false
+                },
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "Public Bucket"
+                    }
+                ]
+            },
+            "Metadata": {
+                "AWS::CloudFormation::Designer": {
+                    "id": "20933937-814a-435b-b8e8-3c21db26d807"
+                }
+            }
+        },
+        "PublicBucketPolicy": {
+            "Type": "AWS::S3::BucketPolicy",
+            "Properties": {
+                "Bucket": {
+                    "Ref": "PublicBucket"
+                },
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Action": [
+                                "s3:GetObject"
+                            ],
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::Join": [
+                                    "",
+                                    [
+                                        "arn:aws:s3:::",
+                                        {
+                                            "Ref": "PublicBucket"
+                                        },
+                                        "/*"
+                                    ]
+                                ]
+                            },
+                            "Principal": "*"
+                        }
+                    ]
+                }
+            },
+            "Metadata": {
+                "AWS::CloudFormation::Designer": {
+                    "id": "3f40c450-e37e-47bc-af32-b047957309af"
+                }
+            }
+        },
+        "PrivateBucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+                "BucketName": "private-bucket-ml-01",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "Private Bucket"
+                    }
+                ]
+            },
+            "Metadata": {
+                "AWS::CloudFormation::Designer": {
+                    "id": "a6310c35-8494-4244-8c3a-f565ec200ba3"
+                }
+            }
+        },
+        "UserVera": {
+            "Type": "AWS::IAM::User",
+            "Properties": {
+                "UserName": "vera"
+            },
+            "Metadata": {
+                "AWS::CloudFormation::Designer": {
+                    "id": "80c8d79f-a77b-4e8c-9ae1-cf185c16efcd"
+                }
+            }
+        },
+        "DeveloperRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "RoleName": "developer",
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "AWS": {
+                                    "Fn::GetAtt": [
+                                        "UserVera",
+                                        "Arn"
+                                    ]
+                                }
+                            },
+                            "Action": "sts:AssumeRole"
+                        }
+                    ]
+                },
+                "Policies": [
+                    {
+                        "PolicyName": "DeveloperPolicy",
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "s3:CreateObject",
+                                        "s3:DeleteObject",
+                                        "s3:PutObject",
+                                        "s3:GetObject"
+                                    ],
+                                    "Resource": [
+                                        {
+                                            "Fn::Join": [
+                                                "",
+                                                [
+                                                    "arn:aws:s3:::",
+                                                    {
+                                                        "Ref": "PrivateBucket"
+                                                    },
+                                                    "/*"
+                                                ]
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "Metadata": {
+                "AWS::CloudFormation::Designer": {
+                    "id": "4f7cc55e-9338-496b-b4aa-c7798785136c"
+                }
+            }
+        }
+    }
+}

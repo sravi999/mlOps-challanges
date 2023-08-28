@@ -1,0 +1,14 @@
+# Use an official SageMaker Python image as the base image
+FROM 720646828776.dkr.ecr.ap-south-1.amazonaws.com/sagemaker-scikit-learn:1.2-1-cpu-py3
+
+# Set working directory
+WORKDIR /opt/ml/code
+
+# Copy your model files to the container
+COPY model.py requirements.txt /opt/ml/code/
+
+# Install required dependencies
+RUN pip install -r requirements.txt
+
+# Define inference command
+ENTRYPOINT ["python", "model.py"]
