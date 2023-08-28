@@ -1,2 +1,2 @@
-# mlOps-challanges
-mlOps-challanges
+# mlOps-challenges
+mlOps-challenges
