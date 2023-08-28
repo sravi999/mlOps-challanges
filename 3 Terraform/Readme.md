@@ -23,13 +23,13 @@ Please create a Terraform (written in HCL) configuration to create and maintain 
 
 # Terraform workflow
 
-- Execute the following command to initializing a terraform configuration directory downloads and installs the providers defined in the configuration.
+- Execute the following command to initialize a Terraform configuration directory. This command downloads and installs the providers defined in the configuration.
 
 ```bash
 terraform init
 ```
 
-- Execute the following command to validate the terraform configurations
+- Execute the following command to validate the Terraform configurations:
 
 ```bash
 terraform validate
@@ -37,7 +37,7 @@ terraform validate
 
 ![Terraform Validate](screenshots/image-1.png)
 
-- Execute the following command to format the terraform configurations
+- Execute the following command to format the Terraform configurations
 
 ```bash
 terraform fmt
@@ -45,13 +45,13 @@ terraform fmt
 
 ![Terraform fmt](screenshots/image-2.png)
 
-- Execute the following terraform plan command it will display the what are the resources are provision and destory
+- Execute the following Terraform plan command; it will display the resources that will be provisioned or destroyed
 
 ```bash
 terraform plan
 ```
 
-- Execute the following command to provision real infrastructure
+- Execute the following command to provision actual infrastructure
 
 ```bash
 terraform apply

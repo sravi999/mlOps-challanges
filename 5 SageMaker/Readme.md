@@ -4,7 +4,7 @@ Amazon SageMaker is a fully managed machine learning service. Developers can qui
 
 # Create a Train Job
 
-To trian a model in AWS Sagemaker, you have to create a training job though Sagemaker SDK or AWS console. After training completes, Amazon SageMaker saves the resulting model artifacts to an Amazon S3 location that you specify. The training job includes the following information.
+To train a model in AWS SageMaker, you need to create a training job through the SageMaker SDK or the AWS console. Once the training is complete, Amazon SageMaker saves the resulting model artifacts to the Amazon S3 location you specify. The training job includes the following information
 
 - AWS S3 bucket where you've stored the training data
 

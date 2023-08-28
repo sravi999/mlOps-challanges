@@ -8,9 +8,9 @@ We use python heavily in our systems and infrastructure. It's important to us th
 
 # Implementation
 
-- Write a function to download the `.csv` file from s3 bucket and read the content of the file using AWS SDK
+- Write a function to download the .csv file from an S3 bucket and read the contents of the file using the AWS SDK
 
-* You can find the sample csv file [lambda-s3-process.csv](lambda-s3-process.csv)
+* You can find the sample CSV file [lambda-s3-process.csv](lambda-s3-process.csv)
 
 ```bash
 def lambda_handler(event, context):
@@ -31,7 +31,7 @@ def lambda_handler(event, context):
 
 ```
 
-- Added two rows to the existing content of csv file and uploaded the updated same csv file back to s3 bucket
+- I added two rows to the existing content of the CSV file and uploaded the updated CSV file back to the S3 bucket
 
 ```bash
 def process_csv(content):

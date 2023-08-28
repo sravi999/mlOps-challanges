@@ -4,7 +4,7 @@ AWS Command Line Interface (AWS CLI) is a unified command-line tool provided by 
 
 # Install AWSCLI in Linux OS
 
-- The following commands install the awscli on linux operating system
+- The following command installs the AWS CLI on a Linux operating system
 
 ```bash
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -24,7 +24,7 @@ aws --version
 
 - Show the contents of the hypothetical s3 bucket Important Data/logs
 
-The following awscli command is used to dispaly the contents of the s3 bucket
+The following command is used to display the contents of the S3 bucket:
 
 ```bash
 aws s3 ls s3://<<BUCKET_NAME>> --recursive
@@ -50,9 +50,9 @@ aws ec2 authorize-security-group-ingress \
 
   - First, create a policy and attach it to role called `developer_level2`
 
-  - To create a policy, first we generate a policy using [AWS Policy Generator](https://awspolicygen.s3.amazonaws.com/policygen.html) and save the generated policy into a file called [policy.json](policy.json) or directly pass the policy to `awscli` command.
+  - To create a policy, first, generate a policy using the [AWS Policy Generator](https://awspolicygen.s3.amazonaws.com/policygen.html) and save the generated policy into a file called [policy.json](policy.json) or you can directly pass the policy to the `awscli` command.
 
-  * The following command describes to create a policy from [policy.json](policy.json) file
+  * The following command describes how to create a policy from the [policy.json](policy.json) file
 
   ```bash
   aws iam create-policy \

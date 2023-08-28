@@ -1,10 +1,10 @@
 # CloudFormation
 
-AWS CloudFormation is a service that helps you to set up AWS resources and managing. Create a template that describes all the AWS resources that you want (like Amazon EC2 instances or Amazon RDS DB instances), and CloudFormation takes care of provisioning and configuring those resources for us. you don't need to individually create and configure AWS resources and figure out what's dependent on what; CloudFormation handles that.
+AWS CloudFormation is a service that helps you model and set up your AWS resources so that you can spend less time managing those resources. You reate a template that describes all the AWS resources that you want (like Amazon EC2 instances or Amazon RDS DB instances), and CloudFormation takes care of provisioning and configuring those resources for you. you don't need to individually create and configure AWS resources and figure out what's dependent on what; CloudFormation handles that.
 
 # Templates
 
-A CloudFormation template is a JSON or YAML formatted text file. you can save these files with any extension, such as `.json`, `.yaml`, `.template`, or `.txt`. CloudFormation uses these templates as blueprints for building our AWS resources. For example, in a template, you can describe an Amazon EC2 instance, such as the instance type, the AMI ID, block device mappings, and its Amazon EC2 key pair name. Whenever you create a stack, you also specify a template that CloudFormation uses to create whatever you described in the template.
+A CloudFormation template is a JSON or YAML formatted text file. You can save these files with any extension, such as `.json`, `.yaml`, `.template`, or `.txt`. CloudFormation uses these templates as blueprints for building your AWS resources. For example, in a template, you can describe an Amazon EC2 instance, such as the instance type, the AMI ID, block device mappings, and its Amazon EC2 key pair name. Whenever you create a stack, you also specify a template that CloudFormation uses to create whatever you described in the template.
 
 # Stacks
 
@@ -14,7 +14,7 @@ When you use CloudFormation, you manage related resources as a single unit calle
 
 - Instantiate a pair of s3 buckets
 
-The following code describe how to created a two buckets, one is public and another one is private using CloudFormation.
+The following code describes how to create two buckets: one that is public and another that is private using CloudFormation.
 
 ```bash
 "Resources": {
@@ -64,8 +64,8 @@ The following code describe how to created a two buckets, one is public and anot
     }
 ```
 
-Refer the [cloudFormationTemp.template](cloudFormationTemp.template) for other task implementations.
+Please refer to the [cloudFormationTemp.template](cloudFormationTemp.template) file for the implementation of other tasks.
 
-Finally, the CloudFormation challenge looks as follows
+Finally, the architecture of the task is as follows
 
 ![cloudFormation](image.png)
