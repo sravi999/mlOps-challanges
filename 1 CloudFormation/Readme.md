@@ -68,4 +68,4 @@ Please refer to the [cloudFormationTemp.template](cloudFormationTemp.template) f
 
 Finally, the architecture of the task is as follows
 
-![cloudFormation](image.png)
+![cloudFormation](image.jpg)
